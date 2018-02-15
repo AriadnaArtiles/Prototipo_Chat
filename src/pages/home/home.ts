@@ -9,6 +9,7 @@ import { ChatPage } from '../chat/chat';
 })
 export class HomePage {
   username: string = '';
+  password: string = '';
 
   constructor(public navCtrl: NavController, public alertCtrl: AlertController) {
 
@@ -24,13 +25,14 @@ export class HomePage {
   }
 
   loginUser() {
-    if (/^[a-zA-Z0-9]+$/.test(this.username)) {
+    if (/^[a-zA-Z0-9]+$/.test(this.username) && /^[a-zA-Z0-9]+$/.test(this.password)) {
       this.navCtrl.push(ChatPage, {
-        username: this.username
+        username: this.username,
+        password: this.password
       });
 
     } else {
-      this.showAlert('Error', 'Invalid Username');
+      this.showAlert('Error', 'Invalid Username or Password');
     }
   }
 

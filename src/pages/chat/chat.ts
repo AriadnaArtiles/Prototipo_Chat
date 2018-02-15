@@ -17,6 +17,7 @@ import { HomePage } from '../home/home';
 export class ChatPage {
   @ViewChild("content") content: any;
   username: string = '';
+  password: string = '';
   message: string = '';
   messages = [];
   offStatus: boolean = false;
@@ -45,11 +46,14 @@ export class ChatPage {
 
   sendMessages() {
     this.username = this.navParams.get('username');
+    this.password = this.navParams.get('password');
     let messagesRef = firebase.database().ref().child("chat");
-    messagesRef.push({ message: this.message, username: this.username });
+    messagesRef.push({ message: this.message, username: this.username, password: this.password });
     this.message = "";
   }
 
-
+  goback() {
+    this.navCtrl.push(HomePage);
+  }
 
 }
