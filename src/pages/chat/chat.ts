@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Content } from 'ionic-angular';
 import * as firebase from 'firebase';
 import { HomePage } from '../home/home';
 /**
@@ -15,15 +15,17 @@ import { HomePage } from '../home/home';
   templateUrl: 'chat.html',
 })
 export class ChatPage {
-  @ViewChild("content") content: any;
+  @ViewChild("content") content: Content;
   username: string = '';
   password: string = '';
   message: string = '';
   messages = [];
-  offStatus: boolean = false;
-  roomkey: string;
+
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.primeraVez = true;
+    this.username = this.navParams.get('username');
+    this.password = this.navParams.get('password');
     this.getMessages();
   }
 
@@ -45,15 +47,13 @@ export class ChatPage {
   }
 
   sendMessages() {
-    this.username = this.navParams.get('username');
-    this.password = this.navParams.get('password');
     let messagesRef = firebase.database().ref().child("chat");
     messagesRef.push({ message: this.message, username: this.username, password: this.password });
     this.message = "";
   }
 
-  goback() {
-    this.navCtrl.push(HomePage);
-  }
+  // goback() {
+  //   this.navCtrl.push(HomePage);
+  // }
 
 }

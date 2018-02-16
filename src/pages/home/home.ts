@@ -25,14 +25,14 @@ export class HomePage {
   }
 
   loginUser() {
-    if (/^[a-zA-Z0-9]+$/.test(this.username) && /^[a-zA-Z0-9]+$/.test(this.password)) {
-      this.navCtrl.push(ChatPage, {
+    if (/^[a-zA-Z0-9Ññ]+$/.test(this.username) && /^[a-zA-Z0-9]+$/.test(this.password)) {
+      this.navCtrl.setRoot(ChatPage, {
         username: this.username,
         password: this.password
       });
 
     } else {
-      this.showAlert('Error', 'Invalid Username or Password');
+      this.showAlert('Error', 'Nombre de usuario o contraseña es incorrecta.');
     }
   }
 
