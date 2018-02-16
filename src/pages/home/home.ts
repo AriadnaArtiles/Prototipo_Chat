@@ -25,15 +25,13 @@ export class HomePage {
   }
 
   loginUser() {
-    if (/^[a-zA-Z0-9Ññ]+$/.test(this.username) && /^[a-zA-Z0-9]+$/.test(this.password)) {
+    if (/^[a-zA-Z0-9Ññ]+$/.test(this.username) && /^[a-zA-Z0-9Ññ]+$/.test(this.password)) {
       this.navCtrl.setRoot(ChatPage, {
         username: this.username,
         password: this.password
       });
-
     } else {
       this.showAlert('Error', 'Nombre de usuario o contraseña es incorrecta.');
     }
   }
-
 }
