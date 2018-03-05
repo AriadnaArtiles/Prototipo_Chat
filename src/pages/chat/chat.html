@@ -15,7 +15,8 @@
 <ion-content #content padding id="content">
   <div *ngFor="let message of messages" [class]="message.specialMessage ? 'message special' : 'message'">
     <div [class]="message.username == username ? 'innerMessage messageRight' : 'innerMessage messageLeft'">
-      <div class="username">{{ message.username }}</div>
+      <span class="username">{{ message.username }}</span>
+      <span class="msg-date">{{message.sendDate |date:'short'}}</span>
       <div class="messageContent">{{ message.message }}</div>
     </div>
   </div>

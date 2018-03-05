@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, Content, AlertController } from 'ionic-angular';
 import * as firebase from 'firebase';
-import { HomePage } from '../home/home';
+
 /**
  * Generated class for the ChatPage page.
  *
@@ -20,13 +20,18 @@ export class ChatPage {
   password: string = '';
   message: string = '';
   messages = [];
-
+  offStatus: boolean = false;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
 
     this.username = this.navParams.get('username');
     this.password = this.navParams.get('password');
     this.getMessages();
+
+    // joinData.set({
+    //   sendDate: Date()
+    // })
+    //this.getMessages();
   }
 
   getMessages() {
@@ -42,15 +47,18 @@ export class ChatPage {
   }
 
   scrollToBottom() {
-    let contentEnd = document.getElementById("content-end").offsetTop;
-    this.content.scrollTo(0, contentEnd, 1000);
+    setTimeout(() => {
+      if (this.offStatus === false) {
+        this.content.scrollToBottom(300);
+      }
+    }, 1000
+    );
   }
 
   sendMessages() {
     let messagesRef = firebase.database().ref().child("chat");
-
     if (this.message != "") {
-      messagesRef.push({ message: this.message, username: this.username, password: this.password });
+      messagesRef.push({ message: this.message, username: this.username, password: this.password, sendDate: Date() });
       this.message = "";
     } else {
       this.showAlert('Error', 'No hay mensaje, debe escribir algo.');
