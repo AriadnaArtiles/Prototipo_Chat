@@ -28,10 +28,7 @@ export class ChatPage {
     this.password = this.navParams.get('password');
     this.getMessages();
 
-    // joinData.set({
-    //   sendDate: Date()
-    // })
-    //this.getMessages();
+
   }
 
   getMessages() {

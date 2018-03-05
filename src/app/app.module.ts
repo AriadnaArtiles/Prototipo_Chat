@@ -7,7 +7,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ChatPage } from '../pages/chat/chat';
-import { ContactosPage } from '../pages/contactos/contactos';
+
 
 
 
@@ -20,8 +20,7 @@ import { ContactosPage } from '../pages/contactos/contactos';
   declarations: [
     MyApp,
     HomePage,
-    ChatPage,
-    ContactosPage
+    ChatPage
   ],
   imports: [
     BrowserModule,
@@ -32,8 +31,7 @@ import { ContactosPage } from '../pages/contactos/contactos';
   entryComponents: [
     MyApp,
     HomePage,
-    ChatPage,
-    ContactosPage
+    ChatPage
   ],
   providers: [
     StatusBar,
